@@ -30,13 +30,13 @@ class Files(viewsets.ViewSet):
         return Response(serializer.data)
 
     def update(self, request, pk=None):
-        file = File.objects.get(id=pk)
-        serializer = FileSerializer(instance=file, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if File.objects.filter(id=pk).exists:
+            serializer = FileSerializer(instance=file, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk = None):
         File.objects.get(id=pk).delete()
