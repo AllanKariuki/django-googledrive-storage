@@ -39,14 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'files',
     'gdstorage',
-    'djangorestframework',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -54,6 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'django_google_drive.urls'
 GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'testdjangogdstorage-ef5b467307ab.json'
+GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'Test Django GDStorage'
 
 TEMPLATES = [
     {
